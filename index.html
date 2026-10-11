@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Navratri – The Divine Celebration</title>
+<meta name="description" content="An immersive, interactive Happy Navratri celebration: nine screens, Navadurga, Garba, wishes and personalised greetings.">
+<meta name="theme-color" content="#2a0845">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --purple:#2a0845; --purple2:#4b1470; --maroon:#4a0a1a; --red:#b3122b;
+  --gold:#f6c453; --gold2:#d99a1e; --orange:#ff8a2b; --cream:#fff3d6;
+  --glass:rgba(255,243,214,.08); --bd:rgba(246,196,83,.45);
+  --ff-d:'Cinzel Decorative','Cinzel',Georgia,'Times New Roman',serif;
+  --ff-h:'Cinzel',Georgia,'Times New Roman',serif;
+  --ff-b:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --ff-hi:'Noto Sans Devanagari','Nirmala UI','Mangal','Kohinoor Devanagari',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{
+  background:radial-gradient(ellipse at 50% 0%,#5a1a7a 0%,#2a0845 42%,#3a0816 100%);
+  color:var(--cream);font-family:var(--ff-b);font-size:20px;line-height:1.5;
+  -webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;
+}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+[tabindex="-1"]:focus{outline:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+.hi{font-family:var(--ff-hi);line-height:1.7}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============ BACKGROUND LAYERS ============ */
+.bgbright{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 0%,#ff9a3c 0%,#b3122b 45%,#4a0a1a 100%);opacity:0;transition:opacity .9s}
+body.bright .bgbright{opacity:1}
+.mandala{position:fixed;left:50%;top:50%;width:min(150vmin,1100px);aspect-ratio:1;margin:calc(min(150vmin,1100px)/-2) 0 0 calc(min(150vmin,1100px)/-2);z-index:1;opacity:.13;pointer-events:none;animation:spin 160s linear infinite}
+.mandala svg{width:100%;height:100%;display:block}
+.rays{position:fixed;left:50%;top:40%;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.2s;
+  background:repeating-conic-gradient(from 0deg,rgba(246,196,83,.13) 0 5deg,transparent 5deg 15deg);
+  -webkit-mask-image:radial-gradient(circle,#000 0,transparent 42%);mask-image:radial-gradient(circle,#000 0,transparent 42%);
+  animation:spin 140s linear infinite paused}
+body.rays-on .rays{opacity:1;animation-play-state:running}
+.stars{position:fixed;inset:0;z-index:1;pointer-events:none}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff3c4;animation:twinkle var(--d,4s) ease-in-out infinite;animation-delay:var(--dl,0s);opacity:.2}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:15;pointer-events:none}
+.frame{position:fixed;inset:8px;z-index:3;pointer-events:none;border:1px solid rgba(246,196,83,.55);border-radius:16px;
+  box-shadow:inset 0 0 50px rgba(246,196,83,.10),0 0 24px rgba(246,196,83,.18);animation:framePulse 5s ease-in-out infinite alternate}
+.frame::after{content:"";position:absolute;inset:6px;border:1px dashed rgba(246,196,83,.28);border-radius:11px}
+.frame b{position:absolute;color:var(--gold);font-size:18px;line-height:1;text-shadow:0 0 10px var(--gold2)}
+.frame b:nth-child(1){top:-2px;left:8px}.frame b:nth-child(2){top:-2px;right:8px}
+.frame b:nth-child(3){bottom:-2px;left:8px}.frame b:nth-child(4){bottom:-2px;right:8px}
+
+/* ============ HEADER & NAV ============ */
+.top{position:fixed;left:0;right:0;top:0;z-index:30;padding:calc(14px + env(safe-area-inset-top)) 22px 8px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-family:var(--ff-h);font-weight:700;letter-spacing:.18em;font-size:.72rem;color:var(--gold)}
+.prog{font-family:var(--ff-h);letter-spacing:.2em;font-size:.72rem;color:var(--cream);opacity:.9;text-align:center;flex:1}
+.tools{display:flex;gap:8px}
+.ibtn{min-width:42px;min-height:42px;padding:0 12px;border-radius:999px;border:1px solid var(--bd);background:rgba(42,8,69,.6);backdrop-filter:blur(8px);font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:.25s}
+.ibtn:hover{background:rgba(246,196,83,.2);box-shadow:0 0 14px rgba(246,196,83,.4)}
+.ibtn[aria-pressed="true"]{background:rgba(246,196,83,.25);border-color:var(--gold)}
+.ibtn .lbl{display:none;font-family:var(--ff-h);font-size:.7rem;letter-spacing:.12em}
+.pbar{position:fixed;left:22px;right:22px;top:calc(58px + env(safe-area-inset-top));height:3px;border-radius:3px;background:rgba(246,196,83,.15);z-index:30;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--gold),#fff1b8);box-shadow:0 0 10px var(--gold);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 20px calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:linear-gradient(to top,rgba(26,6,48,.92),rgba(26,6,48,0));transition:opacity .5s,transform .5s}
+body.s0 .nav{opacity:0;transform:translateY(20px);pointer-events:none}
+.dots{display:flex;gap:2px;align-items:center}
+.dots button{width:20px;height:28px;border:0;background:none;display:grid;place-items:center}
+.dots button::before{content:"";width:9px;height:9px;border-radius:50%;background:rgba(246,196,83,.3);transition:.4s}
+.dots button[aria-current="true"]::before{width:22px;border-radius:6px;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.dots button.done::before{background:rgba(246,196,83,.75)}
+.navbtn{min-height:46px;min-width:46px;padding:0 20px;border-radius:999px;border:1px solid var(--gold);background:rgba(42,8,69,.7);backdrop-filter:blur(8px);font-family:var(--ff-h);font-weight:600;letter-spacing:.14em;font-size:.8rem;color:var(--gold);transition:.25s}
+.navbtn:hover:not(:disabled){background:var(--gold);color:var(--purple);box-shadow:0 0 18px rgba(246,196,83,.6)}
+.navbtn:disabled{opacity:.3;cursor:not-allowed}
+.navbtn .t{display:none}
+@media(min-width:560px){.navbtn .t{display:inline}.ibtn .lbl{display:inline}.brand{font-size:.8rem}}
+
+/* ============ SCREENS ============ */
+#app{position:fixed;inset:0;z-index:4}
+.screen{position:absolute;inset:0;padding:calc(78px + env(safe-area-inset-top)) 22px calc(88px + env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden;
+  display:flex;flex-direction:column;align-items:center;opacity:0;visibility:hidden;transform:translateY(20px) scale(.985);
+  transition:opacity .5s ease,transform .5s ease,visibility 0s .5s;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--gold2) transparent}
+.screen.active{opacity:1;visibility:visible;transform:none;transition:opacity .55s ease .12s,transform .55s ease .12s,visibility 0s}
+.inner{width:min(1120px,100%);margin:auto 0;text-align:center;padding:6px 0}
+.rv{opacity:0}
+.screen.active .rv{animation:rise .85s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*90ms + 180ms)}
+
+.kicker{font-family:var(--ff-h);letter-spacing:.35em;font-size:.72rem;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.h-gold{font-family:var(--ff-d);font-weight:900;line-height:1.15;letter-spacing:.05em;
+  background:linear-gradient(100deg,#fff1b8 0%,#f6c453 25%,#d99a1e 45%,#fff1b8 60%,#f6c453 80%,#fff1b8 100%);background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shine 7s linear infinite;
+  filter:drop-shadow(0 2px 16px rgba(255,150,40,.45))}
+h1.h-gold{font-size:clamp(2.1rem,8.4vw,5.6rem)}
+h2.h-gold{font-size:clamp(1.5rem,5vw,3rem);margin-bottom:12px}
+.sub{font-size:clamp(1.1rem,2.6vw,1.55rem);max-width:760px;margin:14px auto 0;color:var(--cream);font-weight:500}
+.lead{font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:820px;margin:8px auto 0;opacity:.95}
+.hi-big{font-family:var(--ff-hi);font-weight:700;font-size:clamp(1.5rem,4.5vw,2.6rem);color:var(--gold);margin-top:14px;text-shadow:0 0 22px rgba(246,160,40,.6)}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px auto;color:var(--gold);max-width:420px}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 28px;border-radius:999px;border:0;
+  background:linear-gradient(135deg,#ffe08a,#f6c453 45%,#d99a1e);color:#3a0816;font-family:var(--ff-h);font-weight:700;letter-spacing:.1em;font-size:.88rem;text-transform:uppercase;
+  box-shadow:0 0 0 1px #fff1b8 inset,0 8px 24px rgba(217,154,30,.45);transition:transform .2s,box-shadow .3s;animation:btnglow 2.8s ease-in-out infinite}
+.btn:hover:not(:disabled){transform:translateY(-2px) scale(1.03);box-shadow:0 0 0 1px #fff1b8 inset,0 10px 34px rgba(255,190,60,.8)}
+.btn:active:not(:disabled){transform:scale(.97)}
+.btn:disabled{opacity:.55;cursor:default;animation:none}
+.btn.ghost{background:rgba(42,8,69,.55);color:var(--gold);border:1px solid var(--gold);box-shadow:none;animation:none;backdrop-filter:blur(6px)}
+.btn.ghost:hover:not(:disabled){background:rgba(246,196,83,.2);box-shadow:0 0 18px rgba(246,196,83,.5)}
+.btn.sm{min-height:40px;padding:8px 16px;font-size:.72rem}
+.btn.wa{background:linear-gradient(135deg,#6be18f,#25D366 50%,#128C7E);color:#052e16;box-shadow:0 6px 18px rgba(37,211,102,.35);animation:none}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
+
+.glass{background:var(--glass);border:1px solid var(--bd);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 36px rgba(0,0,0,.35),inset 0 0 30px rgba(246,196,83,.05)}
+
+/* ---- Screen 1 ---- */
+.diyas{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,5vw,56px);margin-top:26px}
+.diyas .diya{width:clamp(56px,12vw,100px)}
+.diyas .diya:nth-child(2){width:clamp(70px,15vw,130px)}
+.cd{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.cd div{min-width:64px;padding:8px 6px;border-radius:12px;border:1px solid var(--bd);background:var(--glass)}
+.cd b{display:block;font-family:var(--ff-h);font-size:1.4rem;color:var(--gold)}.cd small{font-family:var(--ff-h);font-size:.6rem;letter-spacing:.2em}
+.cd[hidden]{display:none}
+
+/* ---- Diya ---- */
+.diya{display:block;overflow:visible}
+.diya .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.5s ease-in-out infinite alternate;transition:opacity .9s}
+.diya .flame.in{animation-duration:1.1s}
+.diya .glow{transition:opacity 1.2s;animation:glowp 3s ease-in-out infinite alternate}
+.diya.off .flame,.diya.off .glow{opacity:0}
+
+/* ---- Screen 2 ---- */
+.intro{padding:clamp(18px,3vw,34px);max-width:900px;margin:18px auto 0;text-align:left;font-size:clamp(1.05rem,2vw,1.25rem)}
+.intro p+p{margin-top:.8em}
+.vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:22px}
+.val{padding:20px 12px 18px;transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
+.val:hover{transform:translateY(-6px) scale(1.03);border-color:var(--gold);box-shadow:0 0 30px rgba(246,196,83,.45),0 14px 30px rgba(0,0,0,.4)}
+.val .ic{font-size:2.3rem;display:block;animation:float 4s ease-in-out infinite;animation-delay:var(--d,0s);filter:drop-shadow(0 0 10px rgba(246,196,83,.6))}
+.val .hn{font-family:var(--ff-hi);font-weight:700;font-size:1.5rem;color:var(--gold);margin-top:6px}
+.val .en{font-family:var(--ff-h);letter-spacing:.2em;font-size:.7rem;text-transform:uppercase}
+
+/* ---- Screen 3 ---- */
+.gnote{font-size:.95rem;opacity:.85;margin-top:6px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:22px}
+@media(min-width:900px){.ggrid{grid-template-columns:repeat(3,1fr);gap:18px}}
+.gc{position:relative;padding:18px 14px 16px;text-align:center;color:inherit;font:inherit;border:1px solid var(--bd);border-radius:20px;background:var(--glass);transition:transform .35s,box-shadow .35s,border-color .35s;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:6px}
+.screen.active .gc{animation:cardin .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*80ms + 250ms)}
+.gc:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 0 28px color-mix(in srgb,var(--c) 55%,transparent),0 14px 30px rgba(0,0,0,.4)}
+.gc .dayb{font-family:var(--ff-h);font-size:.66rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase}
+.medal{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:2.2rem;position:relative;
+  background:radial-gradient(circle at 35% 30%,#fff 0,var(--c) 55%,color-mix(in srgb,var(--c) 60%,#000) 100%);
+  box-shadow:0 0 0 3px rgba(42,8,69,.9),0 0 0 5px var(--gold),0 0 24px color-mix(in srgb,var(--c) 70%,transparent)}
+.medal::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px dashed rgba(246,196,83,.55);animation:spin 30s linear infinite}
+.gc .hn{font-family:var(--ff-hi);font-weight:700;font-size:1.2rem;color:var(--cream);margin-top:6px}
+.gc .en{font-family:var(--ff-h);font-size:.66rem;letter-spacing:.14em;opacity:.85}
+.gc .bl{font-size:.95rem;line-height:1.35;opacity:.92}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-h);font-size:.62rem;letter-spacing:.14em;padding:4px 10px;border-radius:999px;border:1px solid var(--bd);background:rgba(0,0,0,.25)}
+.chip i{width:11px;height:11px;border-radius:50%;background:var(--c);border:1px solid rgba(255,255,255,.6)}
+.more{font-family:var(--ff-h);font-size:.62rem;letter-spacing:.18em;color:var(--gold);margin-top:4px}
+
+/* ---- Modal ---- */
+.modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(10,2,20,.78);backdrop-filter:blur(6px);animation:fade .3s both}
+.modal[hidden]{display:none}
+.mbox{position:relative;width:min(640px,100%);max-height:calc(100dvh - 36px);overflow-y:auto;padding:28px 22px 22px;text-align:center;
+  background:linear-gradient(160deg,rgba(75,20,112,.97),rgba(58,8,22,.97));border:1px solid var(--gold);border-radius:24px;box-shadow:0 0 60px rgba(246,196,83,.3);animation:pop .4s cubic-bezier(.2,.8,.2,1) both}
+.mclose{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:1px solid var(--bd);background:rgba(0,0,0,.3);font-size:1.3rem;color:var(--gold)}
+.mbox .medal{margin:6px auto 10px;width:96px;height:96px;font-size:2.8rem}
+.mbox h3{font-family:var(--ff-hi);font-size:1.9rem;color:var(--gold);line-height:1.4}
+.mbox .en{font-family:var(--ff-h);letter-spacing:.2em;font-size:.8rem}
+.mbox .ttl{font-style:italic;font-size:1.2rem;margin:4px 0 10px}
+.mbox p.d{text-align:left;margin:12px 0;font-size:1.08rem}
+.mbox ul{list-style:none;text-align:left;margin:10px 0;display:grid;gap:6px}
+.mbox li{padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.22);border-left:3px solid var(--c);font-size:1rem}
+.mbox .mant{margin:14px 0 4px;padding:10px;border:1px dashed var(--bd);border-radius:12px}
+.mbox .mant .hi{font-size:1.15rem;color:var(--gold)}
+.mbox .mant small{display:block;font-size:.88rem;opacity:.85}
+.mnav{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+
+/* ---- Screen 4 ---- */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 6px}
+.tab{width:46px;height:46px;border-radius:50%;border:1px solid var(--bd);background:rgba(42,8,69,.6);font-family:var(--ff-h);font-weight:700;color:var(--gold);transition:.3s}
+.tab:hover{box-shadow:0 0 16px rgba(246,196,83,.5)}
+.tab[aria-selected="true"]{background:linear-gradient(135deg,#ffe08a,#d99a1e);color:#3a0816;transform:scale(1.15);box-shadow:0 0 22px rgba(246,196,83,.8)}
+.dpanel{margin:14px auto 0;max-width:820px;padding:22px 20px;text-align:left;display:grid;gap:14px;grid-template-columns:auto 1fr;align-items:center;border-color:var(--c);box-shadow:0 0 36px color-mix(in srgb,var(--c) 45%,transparent)}
+.dpanel .medal{width:88px;height:88px;font-size:2.5rem}
+.dpanel h3{font-family:var(--ff-hi);font-size:1.6rem;color:var(--gold);line-height:1.4}
+.dpanel .dn{font-family:var(--ff-h);letter-spacing:.25em;font-size:.72rem;color:var(--gold)}
+.dpanel .msg{margin-top:8px;font-style:italic;font-size:1.15rem;padding:8px 12px;border-left:3px solid var(--gold);background:rgba(0,0,0,.18);border-radius:0 10px 10px 0}
+.dpanel.swap{animation:swap .5s ease both}
+@media(max-width:560px){.dpanel{grid-template-columns:1fr;text-align:center;justify-items:center}.dpanel .msg{text-align:left}}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;margin-top:18px}
+@media(min-width:900px){.dgrid{grid-template-columns:repeat(9,1fr)}}
+.dc{padding:12px 6px;border-radius:14px;border:1px solid var(--bd);background:var(--glass);text-align:center;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:4px;color:inherit;font:inherit}
+.dc b{font-family:var(--ff-h);font-size:.62rem;letter-spacing:.2em;color:var(--gold)}
+.dc .hn{font-family:var(--ff-hi);font-size:.9rem;line-height:1.4}
+.dc i{width:14px;height:14px;border-radius:50%;background:var(--c);border:1px solid #fff9}
+.dc:hover{transform:translateY(-3px)}
+.dc.sel{background:linear-gradient(160deg,rgba(246,196,83,.35),rgba(246,196,83,.08));border-color:var(--gold);transform:translateY(-6px) scale(1.05);box-shadow:0 0 24px rgba(246,196,83,.55)}
+
+/* ---- Screen 5 ---- */
+.bulbs{display:flex;justify-content:center;gap:clamp(6px,2vw,18px);margin-bottom:6px}
+.bulbs i{width:10px;height:10px;border-radius:50%;background:var(--bc);box-shadow:0 0 12px 3px var(--bc);animation:twinkle 1.6s ease-in-out infinite;animation-delay:var(--dl)}
+.garba{--gs:min(82vw,400px);position:relative;width:var(--gs);height:var(--gs);margin:16px auto 8px}
+.garba .gc1,.garba .gc2,.garba .gc3{position:absolute;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
+.gc1{width:96%;height:96%;border:2px dashed rgba(246,196,83,.55);animation:spin 50s linear infinite}
+.gc2{width:62%;height:62%;border:2px dotted rgba(255,138,43,.7);animation:spin 36s linear infinite reverse}
+.gc3{width:30%;height:30%;background:radial-gradient(circle,rgba(255,200,80,.55),transparent 70%);animation:glowp 2.2s ease-in-out infinite alternate}
+.ring{position:absolute;inset:0;animation:spin 28s linear infinite}
+.ring.r2{animation-duration:20s;animation-direction:reverse}
+.ring.r1{--R:calc(var(--gs)*.45)}.ring.r2{--R:calc(var(--gs)*.29)}
+.garba.fast .ring{animation-duration:6s}.garba.fast .ring.r2{animation-duration:5s}
+.ring .dn{position:absolute;left:50%;top:50%;width:0;height:0;transform:rotate(var(--a)) translateY(calc(var(--R)*-1))}
+.ring .up{position:absolute;left:0;top:0;width:0;height:0;transform:rotate(calc(var(--a)*-1))}
+.ring .up span{position:absolute;left:-.8em;top:-.8em;display:block;font-size:clamp(1.3rem,4.4vw,1.9rem);line-height:1;text-shadow:0 0 14px var(--hc),0 0 4px var(--hc);animation:spin 28s linear infinite reverse}
+.ring.r2 .up span{animation-duration:20s;animation-direction:normal}
+.garba.fast .ring .up span{animation-duration:6s}.garba.fast .ring.r2 .up span{animation-duration:5s}
+.garba .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(2.2rem,8vw,3.4rem);filter:drop-shadow(0 0 16px var(--gold));animation:float 3.5s ease-in-out infinite}
+.cmsg{min-height:2.2em;margin-top:10px;font-family:var(--ff-h);letter-spacing:.08em;color:var(--gold);font-size:1rem}
+.cmsg.pop{animation:pop .5s both}
+
+/* ---- Screen 6 ---- */
+.rand{max-width:780px;margin:18px auto 0;padding:24px 20px}
+.rand .tag,.wc .tag{font-family:var(--ff-h);font-size:.64rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase}
+.wtxt{margin-top:8px}
+.wtxt .hi{font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--cream)}
+.wtxt .en{font-size:clamp(1.05rem,2.2vw,1.25rem);font-style:italic;opacity:.92}
+.rand.swap .wtxt,.rand.swap .tag{animation:swap .6s ease both}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-top:20px;text-align:left}
+.wc{padding:18px 18px 14px;display:flex;flex-direction:column;gap:6px;transition:transform .3s,box-shadow .3s;position:relative}
+.wc::before{content:"❝";position:absolute;right:14px;top:4px;font-size:3rem;color:rgba(246,196,83,.2);font-family:Georgia,serif}
+.wc:hover{transform:translateY(-4px);box-shadow:0 0 28px rgba(246,196,83,.3),0 12px 30px rgba(0,0,0,.4)}
+.wc .acts{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:10px}
+.screen.active .wc{animation:cardin .7s both;animation-delay:calc(var(--i)*70ms + 300ms)}
+
+/* ---- Screen 7 ---- */
+.form{max-width:640px;margin:18px auto 0;padding:22px 20px;text-align:left;display:grid;gap:14px}
+.fld label{display:block;font-family:var(--ff-h);font-size:.72rem;letter-spacing:.18em;color:var(--gold);margin-bottom:6px;text-transform:uppercase}
+.fld input,.fld select{width:100%;min-height:48px;padding:10px 14px;border-radius:12px;border:1px solid var(--bd);background:rgba(20,4,36,.65);color:var(--cream);font-size:1.05rem;transition:.25s}
+.fld input::placeholder{color:rgba(255,243,214,.5)}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(246,196,83,.3)}
+.fld select option{background:#2a0845;color:var(--cream)}
+.fld [aria-invalid="true"]{border-color:#ff6b6b}
+.err{color:#ffb4b4;font-size:.92rem;min-height:1.2em;margin-top:4px}
+.gout{max-width:640px;margin:20px auto 0}
+.gout[hidden]{display:none}
+.card{position:relative;padding:34px 26px 26px;border-radius:22px;border:2px solid var(--gold);background:radial-gradient(circle at 50% 0%,rgba(255,138,43,.35),transparent 60%),linear-gradient(160deg,#5b1a82,#3a0816);
+  box-shadow:0 0 0 6px rgba(42,8,69,.8),0 0 0 7px var(--bd),0 0 50px rgba(246,196,83,.3);animation:pop .6s cubic-bezier(.2,.8,.2,1) both}
+.card::before{content:"🪔";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:2rem;background:#3a0816;border-radius:50%;padding:2px 8px;border:1px solid var(--gold)}
+.card .ct{font-family:var(--ff-d);font-size:1.15rem;color:var(--gold);letter-spacing:.08em;margin-bottom:12px}
+.card .cx{font-size:clamp(1.15rem,2.4vw,1.4rem);line-height:1.7;white-space:pre-wrap}
+.card .cx.hi{font-size:clamp(1.1rem,2.3vw,1.3rem)}
+.card .sg{margin-top:14px;font-style:italic;color:var(--gold)}
+
+/* ---- Screen 8 ---- */
+.altar{position:relative;width:min(78vw,300px);margin:12px auto 0}
+.altar .halo{position:absolute;left:50%;top:30%;width:230%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.4);border-radius:50%;background:radial-gradient(circle,rgba(255,196,80,.55),rgba(255,138,43,.18) 40%,transparent 68%);opacity:0;transition:opacity 1.4s,transform 1.4s;pointer-events:none}
+.altar.lit .halo{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.altar .diya{width:100%;position:relative}
+.altar .lotus{display:block;text-align:center;font-size:2.4rem;margin-top:-6px;filter:drop-shadow(0 0 10px #ff9ec0)}
+.side{display:flex;justify-content:center;gap:clamp(18px,8vw,70px);margin-top:6px}
+.side .diya{width:clamp(44px,10vw,64px)}
+.bless{max-width:700px;margin:16px auto 0;padding:20px;opacity:0;transform:translateY(14px);transition:opacity 1s .5s,transform 1s .5s;min-height:150px}
+.bless.show{opacity:1;transform:none}
+.bless p.en{font-size:clamp(1.15rem,2.4vw,1.4rem);font-style:italic}
+.bless p.hi{font-size:clamp(1.1rem,2.3vw,1.3rem);color:var(--gold);margin-top:8px}
+.bless:not(.show){visibility:hidden}
+
+/* ---- Screen 9 ---- */
+.foot{margin-top:26px;font-family:var(--ff-h);letter-spacing:.14em;font-size:.78rem;color:var(--gold);opacity:.9}
+.finale-diyas{display:flex;justify-content:center;gap:clamp(10px,4vw,40px);margin-top:20px}
+.finale-diyas .diya{width:clamp(44px,9vw,76px)}
+
+/* ---- Toast ---- */
+#toasts{position:fixed;left:0;right:0;bottom:calc(92px + env(safe-area-inset-bottom));z-index:80;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;padding:0 16px}
+.toast{padding:11px 20px;border-radius:999px;background:linear-gradient(135deg,#ffe08a,#f6c453 50%,#d99a1e);color:#3a0816;font-family:var(--ff-h);font-weight:700;font-size:.78rem;letter-spacing:.06em;box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 20px rgba(246,196,83,.5);animation:toastin .4s cubic-bezier(.2,.8,.2,1) both;text-align:center;max-width:92vw}
+.toast.err{background:linear-gradient(135deg,#ffb4b4,#ff6b6b);color:#3a0000}
+.toast.out{animation:toastout .35s ease both}
+
+/* ============ KEYFRAMES ============ */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shine{to{background-position:-260% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes cardin{from{opacity:0;transform:translateY(34px) rotateX(18deg) scale(.94)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.8)}70%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+@keyframes swap{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes btnglow{0%,100%{box-shadow:0 0 0 1px #fff1b8 inset,0 8px 24px rgba(217,154,30,.45)}50%{box-shadow:0 0 0 1px #fff1b8 inset,0 8px 38px rgba(255,190,60,.85)}}
+@keyframes framePulse{from{box-shadow:inset 0 0 40px rgba(246,196,83,.08),0 0 14px rgba(246,196,83,.12)}to{box-shadow:inset 0 0 70px rgba(246,196,83,.2),0 0 32px rgba(246,196,83,.32)}}
+@keyframes flick{0%{transform:scale(1,1) rotate(-2deg)}50%{transform:scale(.94,1.08) rotate(2deg)}100%{transform:scale(1.04,.96) rotate(-1deg)}}
+@keyframes glowp{from{opacity:.6;transform:scale(.95)}to{opacity:1;transform:scale(1.06)}}
+@keyframes toastin{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes toastout{to{opacity:0;transform:translateY(10px)}}
+
+/* ============ REDUCED MOTION ============ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1}
+}
+</style>
+</head>
+<body class="s0">
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;background:#2a0845;color:#fff3d6;z-index:999;padding:24px;text-align:center;font-family:Georgia,serif">Please enable JavaScript to experience the Navratri celebration. जय माता दी! 🌺</p></noscript>
+
+<!-- Shared SVG gradients -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="gGlow"><stop offset="0" stop-color="#ffd36b" stop-opacity=".85"/><stop offset="55%" stop-color="#ff9a2b" stop-opacity=".25"/><stop offset="100%" stop-color="#ff9a2b" stop-opacity="0"/></radialGradient>
+    <linearGradient id="gFlame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff6a00"/><stop offset=".55" stop-color="#ffb62e"/><stop offset="1" stop-color="#fff2a0"/></linearGradient>
+    <linearGradient id="gBowl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset=".5" stop-color="#d99a1e"/><stop offset="1" stop-color="#8a5a0a"/></linearGradient>
+    <linearGradient id="gRim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a5a0a"/><stop offset=".5" stop-color="#fff1b8"/><stop offset="1" stop-color="#8a5a0a"/></linearGradient>
+  </defs>
+</svg>
+
+<div class="bgbright" aria-hidden="true"></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div class="mandala" id="mandala" aria-hidden="true"></div>
+<div class="rays" aria-hidden="true"></div>
+<div class="frame" aria-hidden="true"><b>❖</b><b>❖</b><b>❖</b><b>❖</b></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<header class="top" id="top">
+  <span class="brand">🪔 NAVRATRI</span>
+  <span class="prog" id="prog" aria-live="polite">SCREEN 1 OF 9</span>
+  <div class="tools">
+    <button class="ibtn" id="ambBtn" type="button" aria-pressed="false" aria-label="Toggle bright festive ambience"><span aria-hidden="true">🌙</span><span class="lbl">AMBIENCE</span></button>
+    <button class="ibtn" id="musicBtn" type="button" aria-pressed="false" aria-label="Turn background music on"><span aria-hidden="true" id="musicIc">🔇</span><span class="lbl" id="musicLbl">MUSIC OFF</span></button>
+  </div>
+</header>
+<div class="pbar" aria-hidden="true"><i id="pfill"></i></div>
+
+<main id="app">
+
+<!-- ========== SCREEN 1: WELCOME ========== -->
+<section class="screen active" id="s1" aria-labelledby="t1">
+  <div class="inner">
+    <p class="kicker rv">✦ Sharad Utsav ✦</p>
+    <h1 class="h-gold rv" id="t1" tabindex="-1">HAPPY NAVRATRI</h1>
+    <p class="sub rv">May Maa Durga Bless You With Happiness, Strength, Prosperity &amp; Peace</p>
+    <p class="hi-big rv">जय माता दी! 🌺</p>
+    <div class="cd rv" id="countdown" hidden aria-label="Countdown to Navratri"></div>
+    <div class="btns rv"><button class="btn" id="enterBtn" type="button">ENTER THE DIVINE CELEBRATION ✨</button></div>
+    <div class="diyas rv" data-diyas="lit,lit,lit" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ========== SCREEN 2: INTRODUCTION ========== -->
+<section class="screen" id="s2" aria-labelledby="t2" inert>
+  <div class="inner">
+    <p class="kicker rv">नवरात्रि · Navratri</p>
+    <h2 class="h-gold rv" id="t2" tabindex="-1">THE DIVINE FESTIVAL OF NINE NIGHTS</h2>
+    <div class="orn rv" aria-hidden="true">❖</div>
+    <div class="intro glass rv">
+      <p>Navratri, meaning “nine nights”, is one of India’s most cherished festivals, dedicated to the worship of Goddess Durga and her nine forms, the Navadurga. Across the country, homes and temples glow with lamps, prayers, music and dance.</p>
+      <p>At its heart is the victory of good over evil, the belief that courage, truth and devotion can overcome darkness. It is a time of fasting, reflection and gratitude, of welcoming positivity, and of beginning anew with a steady heart.</p>
+      <p>Navratri also celebrates the living diversity of Indian culture: Garba and Dandiya in Gujarat, Durga Puja pandals in the East, Golu displays in the South, Ramlila in the North. Many traditions, one shared devotion.</p>
+    </div>
+    <div class="vals" id="vals"></div>
+  </div>
+</section>
+
+<!-- ========== SCREEN 3: NAVADURGA ========== -->
+<section class="screen" id="s3" aria-labelledby="t3" inert>
+  <div class="inner">
+    <p class="kicker rv">नवदुर्गा · Navadurga</p>
+    <h2 class="h-gold rv" id="t3" tabindex="-1">THE NINE FORMS OF MAA DURGA</h2>
+    <p class="lead rv">Tap any form to learn more about her traditional significance.</p>
+    <p class="gnote rv">Colours shown are popular associations only; traditions differ by region and year.</p>
+    <div class="ggrid" id="ggrid"></div>
+  </div>
+</section>
+
+<!-- ========== SCREEN 4: NINE DAYS ========== -->
+<section class="screen" id="s4" aria-labelledby="t4" inert>
+  <div class="inner">
+    <p class="kicker rv">नौ दिन · Nine Days</p>
+    <h2 class="h-gold rv" id="t4" tabindex="-1">NINE DAYS, NINE CELEBRATIONS</h2>
+    <p class="lead rv">Choose a day to see who is worshipped and what the day celebrates.</p>
+    <div class="tabs rv" id="tabs" role="tablist" aria-label="Select Navratri day"></div>
+    <div class="dpanel glass rv" id="dpanel" role="tabpanel" aria-live="polite"></div>
+    <div class="dgrid" id="dgrid"></div>
+    <p class="gnote rv" style="margin-top:14px">Note: colour traditions can vary across regions and from year to year. Please follow your family or local custom.</p>
+  </div>
+</section>
+
+<!-- ========== SCREEN 5: GARBA ========== -->
+<section class="screen" id="s5" aria-labelledby="t5" inert>
+  <div class="inner">
+    <div class="bulbs rv" id="bulbs" aria-hidden="true"></div>
+    <p class="kicker rv">गरबा · डांडिया</p>
+    <h2 class="h-gold rv" id="t5" tabindex="-1">FEEL THE RHYTHM OF NAVRATRI</h2>
+    <p class="lead rv">Celebrate devotion, music, dance, and togetherness.</p>
+    <p class="gnote rv">A salute to Gujarat’s beloved Garba and Dandiya Raas, and to the many dance traditions that make India so wonderfully diverse.</p>
+    <div class="garba rv" id="garba" aria-hidden="true"><div class="gc1"></div><div class="gc2"></div><div class="gc3"></div><div class="core">🪔</div></div>
+    <div class="btns rv"><button class="btn" id="celebrateBtn" type="button">LET'S CELEBRATE! 💃</button></div>
+    <p class="cmsg" id="cmsg" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ========== SCREEN 6: WISHES ========== -->
+<section class="screen" id="s6" aria-labelledby="t6" inert>
+  <div class="inner">
+    <p class="kicker rv">शुभकामनाएँ · Wishes</p>
+    <h2 class="h-gold rv" id="t6" tabindex="-1">BEAUTIFUL NAVRATRI WISHES</h2>
+    <div class="rand glass rv" id="rand" aria-live="polite">
+      <div class="tag" id="rTag"></div>
+      <div class="wtxt" id="rTxt"></div>
+      <div class="btns">
+        <button class="btn sm" id="rndBtn" type="button">🎲 GENERATE RANDOM WISH</button>
+        <button class="btn sm ghost" id="rCopy" type="button">📋 COPY</button>
+        <button class="btn sm wa" id="rWa" type="button">WHATSAPP</button>
+      </div>
+    </div>
+    <div class="wgrid" id="wgrid"></div>
+  </div>
+</section>
+
+<!-- ========== SCREEN 7: GENERATOR ========== -->
+<section class="screen" id="s7" aria-labelledby="t7" inert>
+  <div class="inner">
+    <p class="kicker rv">आपका संदेश · Your Message</p>
+    <h2 class="h-gold rv" id="t7" tabindex="-1">CREATE YOUR OWN NAVRATRI GREETING</h2>
+    <p class="lead rv">Everything happens in your browser. Nothing is sent or stored anywhere.</p>
+    <form class="form glass rv" id="gform" novalidate autocomplete="off">
+      <div class="fld"><label for="fromName">Your name</label><input id="fromName" type="text" maxlength="40" placeholder="Enter your name" aria-describedby="fromErr" required><div class="err" id="fromErr" role="alert"></div></div>
+      <div class="fld"><label for="toName">Recipient's name (optional)</label><input id="toName" type="text" maxlength="40" placeholder="Enter the recipient's name"></div>
+      <div class="fld"><label for="lang">Language</label>
+        <select id="lang"><option value="hi">हिन्दी (Hindi)</option><option value="en">English</option><option value="hn">Hinglish</option></select></div>
+      <div class="btns" style="margin-top:4px"><button class="btn" type="submit" id="genBtn">GENERATE MY GREETING ✨</button>
+      <button class="btn ghost" type="button" id="resetForm">RESET FORM</button></div>
+    </form>
+    <div class="gout" id="gout" hidden>
+      <div class="card" id="gcard"><div class="ct">नवरात्रि की शुभकामनाएँ</div><div class="cx" id="gtext"></div><div class="sg" id="gsign"></div></div>
+      <div class="btns">
+        <button class="btn sm" type="button" id="gCopy">📋 COPY GREETING</button>
+        <button class="btn sm ghost" type="button" id="gShare">↗ SHARE GREETING</button>
+        <button class="btn sm wa" type="button" id="gWa">WHATSAPP</button>
+        <button class="btn sm ghost" type="button" id="gDl">⬇ DOWNLOAD CARD</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREEN 8: BLESSINGS ========== -->
+<section class="screen" id="s8" aria-labelledby="t8" inert>
+  <div class="inner">
+    <p class="kicker rv">आशीर्वाद · Blessings</p>
+    <h2 class="h-gold rv" id="t8" tabindex="-1">SEEK THE BLESSINGS OF MAA DURGA</h2>
+    <div class="altar rv" id="altar"><div class="halo"></div><div data-bigdiya></div><span class="lotus" aria-hidden="true">🪷</span></div>
+    <div class="side rv" id="sideDiyas" data-diyas="off,off,off,off" aria-hidden="true"></div>
+    <div class="btns rv"><button class="btn" id="lightBtn" type="button">LIGHT A DIYA 🪔</button><button class="btn ghost" id="diyaReset" type="button" hidden>↺ RESET &amp; LIGHT AGAIN</button></div>
+    <div class="bless glass" id="bless" aria-live="polite">
+      <p class="en">May the divine blessings of Maa Durga fill your life with courage, wisdom, happiness, and peace.</p>
+      <p class="hi">माँ दुर्गा की कृपा आप और आपके परिवार पर सदैव बनी रहे। जय माता दी! 🙏</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREEN 9: FINALE ========== -->
+<section class="screen" id="s9" aria-labelledby="t9" inert>
+  <div class="inner">
+    <h2 class="h-gold rv" id="t9" tabindex="-1" style="font-size:clamp(2.2rem,8vw,5.2rem)">HAPPY NAVRATRI 🌺</h2>
+    <p class="hi-big rv">नवरात्रि की हार्दिक शुभकामनाएँ</p>
+    <div class="orn rv" aria-hidden="true">❖ ❖ ❖</div>
+    <p class="sub rv">May these nine sacred nights bring new hope, endless happiness, inner strength, and countless blessings into your life.</p>
+    <div class="btns rv">
+      <button class="btn" id="restartBtn" type="button">RESTART EXPERIENCE</button>
+      <button class="btn ghost" id="shareSite" type="button">SHARE WITH FRIENDS</button>
+      <button class="btn ghost" id="anotherBtn" type="button">CREATE ANOTHER GREETING</button>
+    </div>
+    <div class="finale-diyas rv" data-diyas="lit,lit,lit,lit,lit" aria-hidden="true"></div>
+    <p class="foot rv">Made With ❤️ For The Spirit Of Navratri</p>
+  </div>
+</section>
+</main>
+
+<nav class="nav" id="nav" aria-label="Screen navigation">
+  <button class="navbtn" id="prevBtn" type="button" aria-label="Previous screen">‹<span class="t"> PREVIOUS</span></button>
+  <div class="dots" id="dots"></div>
+  <button class="navbtn" id="nextBtn" type="button" aria-label="Next screen"><span class="t">NEXT </span>›</button>
+</nav>
+
+<div class="modal" id="modal" hidden>
+  <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="mbox">
+    <button class="mclose" id="mClose" type="button" aria-label="Close details">✕</button>
+    <div id="mBody"></div>
+    <div class="mnav"><button class="btn sm ghost" id="mPrev" type="button">‹ PREVIOUS FORM</button><button class="btn sm ghost" id="mNext" type="button">NEXT FORM ›</button></div>
+  </div>
+</div>
+<div id="toasts" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ================= CONFIG =================
+   COUNTDOWN: Navratri dates change every year (they follow the lunar calendar).
+   To show a countdown, put the start date/time of the upcoming Navratri below, e.g.
+   countdownDate: '2027-10-01T00:00:00+05:30'
+   Always verify the date from a trusted panchang. Leave it empty to hide the countdown.
+   After the date passes, update it for the next year (or leave it, the countdown hides itself).
+   SITE URL: optional link to share. When opened from a file, only the text is shared. */
+const CONFIG = { countdownDate: '', siteUrl: '' };
+
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+const rand = (a, b) => a + Math.random() * (b - a);
+
+/* ================= DATA ================= */
+const VALUES = [
+  { hi:'शक्ति', en:'Strength', ic:'🔱' }, { hi:'भक्ति', en:'Devotion', ic:'🙏' },
+  { hi:'साहस', en:'Courage', ic:'🦁' }, { hi:'समृद्धि', en:'Prosperity', ic:'🪙' },
+  { hi:'सकारात्मकता', en:'Positivity', ic:'🌸' }
+];
+
+const DURGA = [
+  { hi:'माँ शैलपुत्री', en:'Maa Shailaputri', title:'Daughter of the Mountains', sym:'🏔️', color:'#f2f2f2', cname:'White',
+    blurb:'Worshipped on the first day as the daughter of the mountain king Himavat.',
+    detail:'Shailaputri means “daughter of the mountain”. She is the first of the nine forms and her worship begins Navratri. She is traditionally shown riding the bull Nandi, holding a trident in one hand and a lotus in the other, and stands for a steady, strong foundation.',
+    attrs:['Rides: Bull (Nandi)','Holds: Trident and lotus','Theme: Foundation and steadfastness'],
+    mh:'ॐ देवी शैलपुत्र्यै नमः', me:'Om Devi Shailaputryai Namah', msg:'Begin with a strong and steady heart.' },
+  { hi:'माँ ब्रह्मचारिणी', en:'Maa Brahmacharini', title:'The Devoted Ascetic', sym:'📿', color:'#e53935', cname:'Red',
+    blurb:'The form of devotion, discipline and perseverance through penance (tapas).',
+    detail:'Brahmacharini represents the Goddess in her period of intense austerity. She is traditionally depicted walking barefoot, holding a rosary (japa mala) in one hand and a water pot (kamandalu) in the other. She inspires patience, focus and unwavering dedication.',
+    attrs:['Holds: Rosary and kamandalu','Theme: Penance and perseverance','Inspires: Discipline and focus'],
+    mh:'ॐ देवी ब्रह्मचारिण्यै नमः', me:'Om Devi Brahmacharinyai Namah', msg:'Patience and devotion open every door.' },
+  { hi:'माँ चंद्रघंटा', en:'Maa Chandraghanta', title:'She of the Crescent Moon', sym:'🔔', color:'#2d4fd6', cname:'Royal Blue',
+    blurb:'Wears a crescent moon like a bell on her forehead; a graceful, fearless protector.',
+    detail:'Her name comes from the crescent moon (chandra) shaped like a bell (ghanta) on her forehead. She is traditionally shown with many arms carrying weapons, mounted on a tiger or lion, symbolising courage balanced with grace and the removal of fear.',
+    attrs:['Rides: Tiger or lion','Mark: Crescent moon like a bell','Theme: Courage and grace'],
+    mh:'ॐ देवी चन्द्रघण्टायै नमः', me:'Om Devi Chandraghantayai Namah', msg:'Meet every challenge with calm courage.' },
+  { hi:'माँ कूष्मांडा', en:'Maa Kushmanda', title:'The Radiant Creator', sym:'☀️', color:'#ffd23f', cname:'Yellow',
+    blurb:'Believed to have brought forth the cosmos with her gentle smile; radiant like the sun.',
+    detail:'Kushmanda is traditionally described as the one whose divine smile created the universe. She is shown with eight arms, riding a lion, carrying a lotus, bow, arrow, discus, mace and a jar of nectar. She is associated with energy, health and warmth.',
+    attrs:['Rides: Lion','Theme: Creation and radiant energy','Inspires: Health and vitality'],
+    mh:'ॐ देवी कूष्माण्डायै नमः', me:'Om Devi Kushmandayai Namah', msg:'Smile, and let your light create something new.' },
+  { hi:'माँ स्कंदमाता', en:'Maa Skandamata', title:'Mother of Skanda', sym:'🪷', color:'#2e9e57', cname:'Green',
+    blurb:'Honoured as the mother of Kartikeya (Skanda), shown with her son in her lap.',
+    detail:'Skandamata is traditionally seated on a lotus, which is why she is also known as Padmasana Devi, holding the infant Skanda. She represents motherly love, nurturing care and compassion.',
+    attrs:['Seat: Lotus','Holds: Infant Skanda (Kartikeya)','Theme: Motherly love and nurturing'],
+    mh:'ॐ देवी स्कन्दमातायै नमः', me:'Om Devi Skandamatre Namah', msg:'Nurture love, and watch it grow.' },
+  { hi:'माँ कात्यायनी', en:'Maa Katyayani', title:'The Warrior Goddess', sym:'⚔️', color:'#9aa0a6', cname:'Grey',
+    blurb:'Born to the sage Katyayana; revered as the fierce slayer of the demon Mahishasura.',
+    detail:'Katyayani is the warrior form of Durga, usually shown riding a lion and carrying a sword and a lotus among her weapons. She stands for righteous strength and the triumph of good over evil.',
+    attrs:['Rides: Lion','Associated with: Mahishasura’s defeat','Theme: Righteous courage'],
+    mh:'ॐ देवी कात्यायन्यै नमः', me:'Om Devi Katyayanyai Namah', msg:'Stand for what is right, bravely.' },
+  { hi:'माँ कालरात्रि', en:'Maa Kalaratri', title:'The Fierce Protector', sym:'🌑', color:'#ff8a2b', cname:'Orange',
+    blurb:'Dark and fierce, she dispels fear and ignorance, yet is called Shubhankari, the bringer of good.',
+    detail:'Kalaratri is depicted with a dark complexion, flowing hair and a fierce look, riding a donkey. Despite her fearsome appearance she is a protector who blesses devotees and removes fear, which is why she is also called Shubhankari.',
+    attrs:['Rides: Donkey','Also called: Shubhankari','Theme: Fearlessness and protection'],
+    mh:'ॐ देवी कालरात्र्यै नमः', me:'Om Devi Kalaratryai Namah', msg:'Let fear fade; light always follows darkness.' },
+  { hi:'माँ महागौरी', en:'Maa Mahagauri', title:'The Radiant, Pure One', sym:'🕊️', color:'#ff6fa5', cname:'Pink',
+    blurb:'Serene and luminous; a symbol of purity, peace and forgiveness.',
+    detail:'Mahagauri is traditionally shown in white, riding a white bull, with a trident and a damaru. She is said to have attained a radiant fair complexion after her penance. In many homes the eighth day, Ashtami, is marked with special prayers and Kanya Puja.',
+    attrs:['Rides: White bull','Holds: Trident and damaru','Theme: Purity and peace'],
+    mh:'ॐ देवी महागौर्यै नमः', me:'Om Devi Mahagauryai Namah', msg:'Choose peace, and let kindness shine.' },
+  { hi:'माँ सिद्धिदात्री', en:'Maa Siddhidatri', title:'Giver of Perfection', sym:'✨', color:'#8e44ad', cname:'Purple',
+    blurb:'Bestows siddhis, spiritual accomplishments, on sincere devotees; the ninth form.',
+    detail:'Siddhidatri is traditionally seated on a lotus and shown with four arms holding a mace, discus, conch and lotus. Her worship on the ninth day completes the nine nights and stands for fulfilment, wisdom and gratitude.',
+    attrs:['Seat: Lotus','Holds: Mace, discus, conch, lotus','Theme: Fulfilment and wisdom'],
+    mh:'ॐ देवी सिद्धिदात्र्यै नमः', me:'Om Devi Siddhidatryai Namah', msg:'Gratitude completes every journey.' }
+];
+
+const WISHES = [
+  { tag:'Blessings of Maa Durga', hi:'माँ दुर्गा का आशीर्वाद आप पर सदा बना रहे। नवरात्रि की हार्दिक शुभकामनाएँ! 🙏', en:'May Maa Durga’s blessings always be with you. Happy Navratri! 🙏' },
+  { tag:'Happiness & Prosperity', hi:'इस नवरात्रि आपके घर में खुशियाँ और समृद्धि का वास हो। जय माता दी! 🌺', en:'May your home be filled with happiness and prosperity this Navratri. Jai Mata Di! 🌺' },
+  { tag:'Courage & Strength', hi:'माँ शक्ति आपको हर चुनौती से लड़ने का साहस और बल दें। शुभ नवरात्रि! 🔱', en:'May Maa Shakti grant you the courage and strength to face every challenge. Shubh Navratri! 🔱' },
+  { tag:'Peace & Harmony', hi:'नौ दिनों की यह पावन साधना आपके जीवन में शांति और सद्भाव लाए। 🕉️', en:'May these nine sacred days bring peace and harmony into your life. 🕉️' },
+  { tag:'Success & New Beginnings', hi:'नवरात्रि आपके हर नए आरंभ को सफलता का आशीर्वाद दे। जय माता दी! ✨', en:'May this Navratri bless every new beginning of yours with success. Jai Mata Di! ✨' },
+  { tag:'Family Happiness', hi:'आपके पूरे परिवार को नवरात्रि की ढेरों शुभकामनाएँ। माँ की कृपा सब पर बरसे। 🏡', en:'Warm Navratri wishes to you and your entire family. May Maa’s grace shower on all. 🏡' },
+  { tag:'Spiritual Growth', hi:'भक्ति और श्रद्धा से आपका मन निर्मल और आत्मा प्रकाशित हो। 🪔', en:'May devotion and faith purify your heart and illuminate your soul. 🪔' },
+  { tag:'Positive Energy', hi:'हर दिन नई ऊर्जा, नई उमंग और सकारात्मकता लेकर आए। हैप्पी नवरात्रि! 🌸', en:'May every day bring new energy, joy and positivity. Happy Navratri! 🌸' },
+  { tag:'Garba Joy', hi:'गरबा की धुन और डांडिया की थाप पर झूमिए, खुशियाँ मनाइए! 💃', en:'Dance to the beats of Garba and Dandiya, and celebrate with joy! 💃' }
+];
+
+const CELEBRATE_MSGS = [
+  'Garba nights, glowing lights, and hearts full of joy! 💃',
+  'Let the dandiya sticks clap and the spirits soar! 🥁',
+  'Together we dance, together we pray. Jai Mata Di! 🌺',
+  'India’s many rhythms, one beautiful festival! ✨'
+];
+
+/* ================= UTIL ================= */
+function toast(msg, type) {
+  const box = $('#toasts');
+  const t = document.createElement('div');
+  t.className = 'toast' + (type === 'err' ? ' err' : '');
+  t.textContent = msg;
+  box.appendChild(t);
+  while (box.children.length > 3) box.firstChild.remove();
+  setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 400); }, 2600);
+}
+function legacyCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.setAttribute('readonly', '');
+  ta.style.cssText = 'position:fixed;top:-999px;opacity:0';
+  document.body.appendChild(ta); ta.select();
+  const ok = document.execCommand('copy'); ta.remove();
+  if (!ok) throw new Error('copy failed');
+}
+async function copyText(text, label = 'Copied to clipboard ✨') {
+  try {
+    if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+    else legacyCopy(text);
+    toast(label);
+  } catch (e) {
+    try { legacyCopy(text); toast(label); }
+    catch (e2) { toast('Could not copy. Please select the text and copy it manually.', 'err'); }
+  }
+}
+function pageUrl() {
+  if (CONFIG.siteUrl) return CONFIG.siteUrl;
+  return /^https?:$/.test(location.protocol) ? location.href.split('#')[0] : '';
+}
+function shareWhatsApp(text) {
+  const url = pageUrl();
+  const msg = url ? text + '\n' + url : text;
+  const w = window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  if (!w) copyText(msg, 'Pop-up blocked. Message copied instead!');
+}
+async function shareText(text) {
+  const url = pageUrl();
+  if (navigator.share) {
+    try { await navigator.share(Object.assign({ title: 'Happy Navratri', text }, url ? { url } : {})); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  shareWhatsApp(text);
+}
+const wishText = w => w.hi + '\n' + w.en;
+
+/* ================= DECOR BUILDERS ================= */
+function diyaSVG(lit) {
+  return `<svg viewBox="0 0 120 100" class="diya${lit ? '' : ' off'}" aria-hidden="true" focusable="false">
+    <g class="glow"><ellipse cx="60" cy="38" rx="56" ry="44" fill="url(#gGlow)"/></g>
+    <path class="flame" d="M60 4C80 26 77 44 60 51C43 44 40 26 60 4Z" fill="url(#gFlame)"/>
+    <path class="flame in" d="M60 22C69 32 68 42 60 46C52 42 51 32 60 22Z" fill="#fff6c8"/>
+    <rect x="58" y="48" width="4" height="9" rx="1" fill="#3a1a0a"/>
+    <path d="M6 56Q60 112 114 56Q112 66 98 76Q60 102 22 76Q8 66 6 56Z" fill="url(#gBowl)"/>
+    <ellipse cx="60" cy="56" rx="54" ry="8" fill="url(#gRim)"/>
+    <ellipse cx="60" cy="57" rx="40" ry="4.5" fill="#5a2a08" opacity=".75"/>
+  </svg>`;
+}
+function fillDiyas() {
+  $$('[data-diyas]').forEach(box => {
+    box.innerHTML = box.dataset.diyas.split(',').map(s => diyaSVG(s === 'lit')).join('');
+  });
+  $('[data-bigdiya]').innerHTML = diyaSVG(false);
+}
+function buildMandala() {
+  let p = '';
+  for (let i = 0; i < 24; i++) p += `<path transform="rotate(${i * 15} 200 200)" d="M200 200C184 150 184 100 200 36C216 100 216 150 200 200Z"/>`;
+  for (let i = 0; i < 12; i++) p += `<path transform="rotate(${i * 30 + 15} 200 200)" d="M200 200C190 172 190 142 200 108C210 142 210 172 200 200Z"/>`;
+  for (let i = 0; i < 36; i++) p += `<circle cx="200" cy="${200 - 192}" r="2.2" transform="rotate(${i * 10} 200 200)"/>`;
+  [190, 150, 100, 52, 22].forEach(r => { p += `<circle cx="200" cy="200" r="${r}"/>`; });
+  $('#mandala').innerHTML = `<svg viewBox="0 0 400 400" fill="none" stroke="#f6c453" stroke-width=".9">${p}</svg>`;
+}
+function buildStars() {
+  const n = reduce.matches ? 0 : 26, box = $('#stars');
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement('i');
+    s.style.cssText = `left:${rand(0, 100)}%;top:${rand(0, 100)}%;--d:${rand(2.5, 6).toFixed(1)}s;--dl:${rand(0, 5).toFixed(1)}s`;
+    box.appendChild(s);
+  }
+}
+function buildBulbs() {
+  const cols = ['#ff5a5f', '#ffd23f', '#ff8a2b', '#ff6fa5', '#7bd88f', '#6fa8ff'];
+  $('#bulbs').innerHTML = Array.from({ length: 14 }, (_, i) =>
+    `<i style="--bc:${cols[i % cols.length]};--dl:${(i * .17).toFixed(2)}s"></i>`).join('');
+}
+function buildGarba() {
+  const g = $('#garba'), hues = ['#ff5a5f', '#ffd23f', '#ff8a2b', '#ff6fa5', '#7bd88f', '#6fa8ff'];
+  const mk = (n, cls, emo) => {
+    let h = `<div class="ring ${cls}">`;
+    for (let i = 0; i < n; i++) {
+      h += `<div class="dn" style="--a:${(360 / n * i).toFixed(1)}deg"><div class="up"><span style="--hc:${hues[i % hues.length]}">${emo[i % 2]}</span></div></div>`;
+    }
+    return h + '</div>';
+  };
+  g.insertAdjacentHTML('afterbegin', mk(12, 'r1', ['💃', '🕺']) + mk(8, 'r2', ['🕺', '💃']));
+}
+
+/* ================= STATIC CONTENT ================= */
+function buildContent() {
+  $('#vals').innerHTML = VALUES.map((v, i) =>
+    `<div class="val glass rv"><span class="ic" style="--d:${i * .4}s" aria-hidden="true">${v.ic}</span><div class="hn">${v.hi}</div><div class="en">${v.en}</div></div>`).join('');
+
+  $('#ggrid').innerHTML = DURGA.map((d, i) =>
+    `<button type="button" class="gc" style="--c:${d.color};--i:${i}" data-i="${i}" aria-haspopup="dialog" aria-label="${d.en}, day ${i + 1}. Open details">
+      <span class="dayb">Day ${i + 1}</span>
+      <span class="medal" aria-hidden="true">${d.sym}</span>
+      <span class="hn">${d.hi}</span>
+      <span class="en">${d.en.toUpperCase()}</span>
+      <span class="bl">${d.blurb}</span>
+      <span class="chip"><i></i>${d.cname}</span>
+      <span class="more">TAP FOR MORE ›</span>
+    </button>`).join('');
+
+  $('#tabs').innerHTML = DURGA.map((d, i) =>
+    `<button type="button" class="tab" role="tab" data-i="${i}" aria-selected="false" aria-label="Day ${i + 1}">${i + 1}</button>`).join('');
+  $('#dgrid').innerHTML = DURGA.map((d, i) =>
+    `<button type="button" class="dc" style="--c:${d.color}" data-i="${i}" aria-label="Show day ${i + 1}: ${d.en}"><b>DAY ${i + 1}</b><i></i><span class="hn">${d.hi}</span></button>`).join('');
+
+  $('#wgrid').innerHTML = WISHES.map((w, i) =>
+    `<article class="wc glass" style="--i:${i}"><div class="tag">${w.tag}</div>
+      <div class="wtxt"><div class="hi">${w.hi}</div><div class="en">${w.en}</div></div>
+      <div class="acts"><button class="btn sm ghost" type="button" data-copy="${i}">📋 Copy</button><button class="btn sm wa" type="button" data-wa="${i}">WhatsApp</button></div></article>`).join('');
+
+  $$('.screen').forEach(s => $$('.rv', s).forEach((el, i) => el.style.setProperty('--i', i)));
+}
+
+/* ================= CANVAS FX ================= */
+const fx = { cv: $('#fx'), ctx: null, w: 0, h: 0, dpr: 1, sparks: [], petals: [], bits: [], petalTarget: 12, raf: 0, last: 0 };
+const PETAL_COLS = ['#ff7a9c', '#ff9f43', '#ffcf40', '#ff5a5f', '#ffd6e0', '#ffb3c6'];
+const CONF_COLS = ['#ff5a5f', '#ffd23f', '#ff8a2b', '#ff6fa5', '#7bd88f', '#6fa8ff', '#fff1b8', '#c77dff'];
+function newSpark(init) {
+  return { x: rand(0, fx.w), y: init ? rand(0, fx.h) : fx.h + 10, r: rand(.6, 2), vy: -rand(.08, .32), vx: rand(-.1, .1), ph: rand(0, 6.28), sp: rand(.012, .035), c: Math.random() < .7 ? '246,196,83' : '255,160,60' };
+}
+function newPetal(top) {
+  return { x: rand(0, fx.w), y: top ? rand(-fx.h * .2, -10) : rand(-fx.h, fx.h), s: rand(6, 12), vy: rand(.5, 1.5), vx: rand(-.3, .3), rot: rand(0, 6.28), vr: rand(-.03, .03), sw: rand(0, 6.28), sa: rand(.3, .9), c: PETAL_COLS[(Math.random() * PETAL_COLS.length) | 0] };
+}
+function fxSeed() {
+  const n = Math.round(Math.min(70, fx.w * fx.h / 18000));
+  fx.sparks = Array.from({ length: reduce.matches ? Math.min(n, 24) : n }, () => newSpark(true));
+}
+function fxResize() {
+  fx.dpr = Math.min(window.devicePixelRatio || 1, 2);
+  fx.w = innerWidth; fx.h = innerHeight;
+  fx.cv.width = fx.w * fx.dpr; fx.cv.height = fx.h * fx.dpr;
+  fx.ctx.setTransform(fx.dpr, 0, 0, fx.dpr, 0, 0);
+  fxSeed();
+  if (reduce.matches) fxFrame(performance.now());
+}
+function drawPetal(c, x, y, s, rot, col, a) {
+  c.save(); c.translate(x, y); c.rotate(rot); c.globalAlpha = a; c.fillStyle = col;
+  c.beginPath(); c.ellipse(0, 0, s, s * .5, 0, 0, 6.2832); c.fill();
+  c.globalAlpha = a * .5; c.fillStyle = 'rgba(255,255,255,.7)';
+  c.beginPath(); c.ellipse(-s * .2, -s * .1, s * .5, s * .18, 0, 0, 6.2832); c.fill();
+  c.restore();
+}
+function fxFrame(t) {
+  const c = fx.ctx, k = Math.min(2.5, (t - (fx.last || t)) / 16.67 || 1);
+  fx.last = t;
+  c.clearRect(0, 0, fx.w, fx.h);
+  const still = reduce.matches;
+  for (const s of fx.sparks) {
+    if (!still) { s.x += s.vx * k; s.y += s.vy * k; s.ph += s.sp * k; if (s.y < -10) Object.assign(s, newSpark(false)); }
+    const a = .3 + .7 * (.5 + .5 * Math.sin(s.ph));
+    c.fillStyle = `rgba(${s.c},${(a * .18).toFixed(3)})`; c.beginPath(); c.arc(s.x, s.y, s.r * 3, 0, 6.2832); c.fill();
+    c.fillStyle = `rgba(${s.c},${a.toFixed(3)})`; c.beginPath(); c.arc(s.x, s.y, s.r, 0, 6.2832); c.fill();
+  }
+  if (!still) {
+    const target = fx.petalTarget;
+    while (fx.petals.length < target) fx.petals.push(newPetal(fx.petals.length > 0 ? Math.random() < .6 : false));
+    for (let i = fx.petals.length - 1; i >= 0; i--) {
+      const p = fx.petals[i];
+      p.y += p.vy * k; p.sw += .02 * k; p.x += (p.vx + Math.sin(p.sw) * p.sa) * k; p.rot += p.vr * k;
+      if (p.y > fx.h + 20) { if (i < target) Object.assign(p, newPetal(true)); else { fx.petals.splice(i, 1); continue; } }
+      drawPetal(c, p.x, p.y, p.s, p.rot, p.c, .85);
+    }
+    for (let i = fx.bits.length - 1; i >= 0; i--) {
+      const b = fx.bits[i];
+      b.vy += b.g * k; b.vx *= .995; b.x += (b.vx + (b.kind === 'p' ? Math.sin(b.life * .05) * .6 : 0)) * k; b.y += b.vy * k; b.rot += b.vr * k; b.life -= k;
+      if (b.life <= 0 || b.y > fx.h + 30) { fx.bits.splice(i, 1); continue; }
+      const a = Math.min(1, b.life / (b.max * .3));
+      if (b.kind === 'p') drawPetal(c, b.x, b.y, b.w, b.rot, b.col, a);
+      else { c.save(); c.translate(b.x, b.y); c.rotate(b.rot); c.globalAlpha = a; c.fillStyle = b.col; c.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); c.restore(); }
+    }
+  }
+}
+function fxLoop(t) { fxFrame(t); fx.raf = requestAnimationFrame(fxLoop); }
+function fxStart() { if (reduce.matches || fx.raf || document.hidden) return; fx.last = 0; fx.raf = requestAnimationFrame(fxLoop); }
+function fxStop() { cancelAnimationFrame(fx.raf); fx.raf = 0; }
+function burst(x, y, n = 90, kind = 'c') {
+  if (reduce.matches) return;
+  n = Math.min(n, 280 - fx.bits.length);
+  for (let i = 0; i < n; i++) {
+    const a = rand(0, 6.2832), sp = rand(3, 10);
+    const petal = kind === 'p' || (kind === 'm' && Math.random() < .4);
+    fx.bits.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 4, g: .2, rot: rand(0, 6.28), vr: rand(-.25, .25),
+      w: petal ? rand(6, 11) : rand(5, 10), h: rand(3, 6), col: petal ? PETAL_COLS[(Math.random() * PETAL_COLS.length) | 0] : CONF_COLS[(Math.random() * CONF_COLS.length) | 0],
+      life: rand(70, 130), max: 130, kind: petal ? 'p' : 'c' });
+  }
+}
+function rain(n = 40, kind = 'p') {
+  if (reduce.matches) return;
+  n = Math.min(n, 280 - fx.bits.length);
+  for (let i = 0; i < n; i++) {
+    const petal = kind === 'p';
+    fx.bits.push({ x: rand(0, fx.w), y: rand(-fx.h * .3, -10), vx: rand(-.6, .6), vy: rand(1, 3), g: .01, rot: rand(0, 6.28), vr: rand(-.08, .08),
+      w: petal ? rand(6, 11) : rand(5, 9), h: rand(3, 6), col: petal ? PETAL_COLS[(Math.random() * PETAL_COLS.length) | 0] : CONF_COLS[(Math.random() * CONF_COLS.length) | 0],
+      life: rand(180, 320), max: 320, kind: petal ? 'p' : 'c' });
+  }
+}
+function centerOf(el) { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }
+
+/* ================= AUDIO (synthesised, no files) ================= */
+const music = { ctx: null, master: null, delay: null, timer: 0, on: false, built: false };
+const SCALE = [261.63, 293.66, 329.63, 392, 440, 523.25, 587.33, 659.25];
+let noteIdx = 2;
+function audioBuild() {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) throw new Error('no audio');
+  const ctx = music.ctx = new AC();
+  music.master = ctx.createGain(); music.master.gain.value = 0; music.master.connect(ctx.destination);
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; lp.connect(music.master);
+  [130.81, 196, 261.63].forEach((f, i) => {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = f; g.gain.value = .05 - i * .012;
+    const lfo = ctx.createOscillator(), lg = ctx.createGain();
+    lfo.frequency.value = .08 + i * .05; lg.gain.value = 1.2; lfo.connect(lg); lg.connect(o.detune); lfo.start();
+    o.connect(g); g.connect(lp); o.start();
+  });
+  music.delay = ctx.createDelay(1); music.delay.delayTime.value = .38;
+  const fb = ctx.createGain(); fb.gain.value = .38;
+  music.delay.connect(fb); fb.connect(music.delay); music.delay.connect(music.master);
+  music.built = true;
+}
+function pluck(freq, vol = .09, dur = 2.4) {
+  const ctx = music.ctx, t = ctx.currentTime;
+  [[1, 'triangle', 1], [2, 'sine', .35]].forEach(([m, type, v]) => {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = freq * m;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol * v, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g); g.connect(music.master); g.connect(music.delay); o.start(t); o.stop(t + dur + .1);
+  });
+}
+function nextNote() {
+  if (!music.on || document.hidden) return;
+  noteIdx = Math.max(0, Math.min(SCALE.length - 1, noteIdx + ((Math.random() * 5) | 0) - 2));
+  pluck(SCALE[noteIdx]);
+}
+function setMusicUI(on) {
+  const b = $('#musicBtn');
+  b.setAttribute('aria-pressed', String(on));
+  b.setAttribute('aria-label', on ? 'Turn background music off' : 'Turn background music on');
+  $('#musicIc').textContent = on ? '🔊' : '🔇';
+  $('#musicLbl').textContent = on ? 'MUSIC ON' : 'MUSIC OFF';
+}
+function toggleMusic() {
+  try {
+    if (!music.on) {
+      if (!music.built) audioBuild();
+      music.ctx.resume();
+      music.master.gain.cancelScheduledValues(music.ctx.currentTime);
+      music.master.gain.setTargetAtTime(.7, music.ctx.currentTime, .6);
+      music.on = true; nextNote(); music.timer = setInterval(nextNote, 2200);
+      toast('Soft ambient music on 🎶');
+    } else {
+      music.on = false; clearInterval(music.timer);
+      music.master.gain.setTargetAtTime(0, music.ctx.currentTime, .3);
+      setTimeout(() => { if (!music.on) music.ctx.suspend(); }, 1200);
+      toast('Music off');
+    }
+    setMusicUI(music.on);
+  } catch (e) {
+    music.on = false; setMusicUI(false);
+    toast('Audio is not available in this browser. The site works fine without it!', 'err');
+  }
+}
+function chime() {
+  if (!music.on || !music.ctx) return;
+  try { pluck(880, .1, 3); setTimeout(() => music.on && pluck(1318.5, .06, 3), 160); } catch (e) { /* ignore */ }
+}
+
+/* ================= NAVIGATION ================= */
+const screens = $$('.screen');
+const TOTAL = screens.length;
+let cur = 0, busy = false;
+
+function updateNavUI() {
+  $('#prog').textContent = `SCREEN ${cur + 1} OF ${TOTAL}`;
+  $('#pfill').style.width = ((cur + 1) / TOTAL * 100) + '%';
+  $$('#dots button').forEach((b, i) => {
+    if (i === cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    b.classList.toggle('done', i < cur);
+  });
+  $('#prevBtn').disabled = cur === 0;
+  const nb = $('#nextBtn'), last = cur === TOTAL - 1;
+  nb.innerHTML = last ? '<span class="t">RESTART </span>↺' : '<span class="t">NEXT </span>›';
+  nb.setAttribute('aria-label', last ? 'Restart experience' : 'Next screen');
+  $('#nav').inert = cur === 0;
+  document.body.className = document.body.className.replace(/\bs\d+\b/g, '').trim();
+  document.body.classList.add('s' + cur);
+  document.body.classList.toggle('rays-on', cur === 0 || cur === TOTAL - 1);
+}
+function onEnter(i) {
+  fx.petalTarget = reduce.matches ? 0 : [22, 10, 10, 10, 14, 10, 8, 14, 34][i];
+  if (i === 3 && !dayInit) { dayInit = true; selectDay(0, false); }
+  if (i === 8) setTimeout(() => rain(50, 'p'), 400);
+}
+function showScreen(i, force) {
+  i = Math.max(0, Math.min(TOTAL - 1, i));
+  if (!force && (i === cur || busy)) return;
+  busy = true; setTimeout(() => { busy = false; }, 520);
+  const old = screens[cur];
+  old.classList.remove('active'); old.inert = true;
+  cur = i;
+  const s = screens[cur];
+  s.inert = false; s.scrollTop = 0; s.classList.add('active');
+  updateNavUI(); onEnter(cur);
+  const h = $('[tabindex="-1"]', s);
+  if (h) setTimeout(() => h.focus({ preventScroll: true }), 120);
+}
+function nextScreen() { if (cur < TOTAL - 1) showScreen(cur + 1); }
+function previousScreen() { if (cur > 0) showScreen(cur - 1); }
+
+function buildDots() {
+  $('#dots').innerHTML = screens.map((_, i) => `<button type="button" data-go="${i}" aria-label="Go to screen ${i + 1}"></button>`).join('');
+  $('#dots').addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) showScreen(+b.dataset.go); });
+}
+
+/* ================= MODAL ================= */
+const modal = $('#modal'); let mIdx = 0, mOpener = null;
+function renderModal() {
+  const d = DURGA[mIdx];
+  $('#mbox').style.setProperty('--c', d.color);
+  $('#mBody').innerHTML = `
+    <div class="medal" style="--c:${d.color}" aria-hidden="true">${d.sym}</div>
+    <p class="en">DAY ${mIdx + 1} · NAVADURGA</p>
+    <h3 id="mTitle" tabindex="-1">${d.hi}</h3>
+    <p class="en">${d.en.toUpperCase()}</p>
+    <p class="ttl">${d.title}</p>
+    <span class="chip" style="--c:${d.color}"><i></i>Popular colour: ${d.cname} (varies by region)</span>
+    <p class="d">${d.detail}</p>
+    <ul>${d.attrs.map(a => `<li>${a}</li>`).join('')}</ul>
+    <div class="mant"><div class="hi">${d.mh}</div><small>${d.me}</small></div>`;
+  $('#mbox').scrollTop = 0;
+}
+function openModal(i, opener) {
+  mIdx = i; mOpener = opener || document.activeElement; renderModal();
+  modal.hidden = false; $('#app').inert = true; $('#nav').inert = true; $('#top').inert = true;
+  $('#mClose').focus();
+}
+function closeModal() {
+  if (modal.hidden) return;
+  modal.hidden = true; $('#app').inert = false; $('#top').inert = false; $('#nav').inert = cur === 0;
+  if (mOpener && document.contains(mOpener)) mOpener.focus({ preventScroll: true });
+}
+function stepModal(dir) { mIdx = (mIdx + dir + DURGA.length) % DURGA.length; renderModal(); }
+
+/* ================= SCREEN 4: DAYS ================= */
+let dayInit = false, dayIdx = 0;
+function selectDay(i, animate = true) {
+  dayIdx = i; const d = DURGA[i];
+  $$('#tabs .tab').forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+  $$('#dgrid .dc').forEach((c, k) => c.classList.toggle('sel', k === i));
+  const p = $('#dpanel');
+  p.style.setProperty('--c', d.color);
+  p.innerHTML = `<div class="medal" style="--c:${d.color}" aria-hidden="true">${d.sym}</div>
+    <div><div class="dn">DAY ${i + 1} OF 9</div><h3>${d.hi}</h3><p><strong>${d.en}:</strong> ${d.blurb}</p>
+    <p style="margin-top:6px"><span class="chip" style="--c:${d.color}"><i></i>Commonly associated: ${d.cname}</span></p>
+    <p class="msg">“${d.msg}”</p></div>`;
+  p.classList.remove('swap'); void p.offsetWidth; if (animate) p.classList.add('swap');
+}
+
+/* ================= SCREEN 5: GARBA ================= */
+let cIdx = 0, fastT = 0;
+function celebrate() {
+  const btn = $('#celebrateBtn'), [x, y] = centerOf(btn);
+  burst(x, y, 110, 'c'); burst(x, y, 40, 'p'); rain(40, 'c');
+  const g = $('#garba'); g.classList.add('fast'); clearTimeout(fastT); fastT = setTimeout(() => g.classList.remove('fast'), 3500);
+  const m = $('#cmsg'); m.textContent = CELEBRATE_MSGS[cIdx++ % CELEBRATE_MSGS.length];
+  m.classList.remove('pop'); void m.offsetWidth; m.classList.add('pop');
+  toast('Jai Mata Di! 🎉');
+}
+
+/* ================= SCREEN 6: WISHES ================= */
+let rIdx = 0;
+function generateRandomWish(first) {
+  let n; do { n = (Math.random() * WISHES.length) | 0; } while (WISHES.length > 1 && n === rIdx && !first);
+  rIdx = n; const w = WISHES[n], box = $('#rand');
+  $('#rTag').textContent = w.tag;
+  $('#rTxt').innerHTML = `<div class="hi"></div><div class="en"></div>`;
+  $('#rTxt .hi').textContent = w.hi; $('#rTxt .en').textContent = w.en;
+  box.classList.remove('swap'); void box.offsetWidth; box.classList.add('swap');
+  if (!first) { const [x, y] = centerOf($('#rndBtn')); burst(x, y, 22, 'p'); }
+}
+
+/* ================= SCREEN 7: GREETING ================= */
+let lastGreeting = null;
+function clean(v) { return v.replace(/\s+/g, ' ').trim(); }
+function buildGreeting(from, to, lang) {
+  const who = to || from;
+  const T = {
+    hi: { title: 'नवरात्रि की हार्दिक शुभकामनाएँ', body: `प्रिय ${who}, आपको और आपके परिवार को नवरात्रि की हार्दिक शुभकामनाएँ! माँ दुर्गा आपके जीवन में सुख, शांति, शक्ति और समृद्धि प्रदान करें। जय माता दी! 🌺`, sign: to ? `शुभकामनाओं सहित, ${from}` : '' },
+    en: { title: 'Happy Navratri', body: `Dear ${who}, wishing you and your family a very Happy Navratri! May Maa Durga bless your life with happiness, peace, strength and prosperity. Jai Mata Di! 🌺`, sign: to ? `With love, ${from}` : '' },
+    hn: { title: 'Happy Navratri', body: `Dear ${who}, aapko aur aapke parivaar ko Navratri ki hardik shubhkamnayein! Maa Durga aapke jeevan mein sukh, shanti, shakti aur samriddhi pradaan karein. Jai Mata Di! 🌺`, sign: to ? `Pyaar ke saath, ${from}` : '' }
+  };
+  return T[lang];
+}
+function generateGreeting(e) {
+  if (e) e.preventDefault();
+  const fi = $('#fromName'), err = $('#fromErr');
+  const from = clean(fi.value), to = clean($('#toName').value), lang = $('#lang').value;
+  if (!from) {
+    err.textContent = 'Please enter your name to create the greeting.';
+    fi.setAttribute('aria-invalid', 'true'); fi.focus(); return;
+  }
+  err.textContent = ''; fi.removeAttribute('aria-invalid');
+  const g = buildGreeting(from, to, lang);
+  lastGreeting = { text: g.body + (g.sign ? '\n' + g.sign : ''), title: g.title, body: g.body, sign: g.sign, lang };
+  $('#gcard .ct').textContent = g.title;
+  const tx = $('#gtext'); tx.textContent = g.body; tx.classList.toggle('hi', lang === 'hi');
+  $('#gsign').textContent = g.sign;
+  const out = $('#gout'); out.hidden = false;
+  const c = $('#gcard'); c.style.animation = 'none'; void c.offsetWidth; c.style.animation = '';
+  setTimeout(() => out.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest' }), 80);
+  const [x, y] = centerOf($('#genBtn')); burst(x, y, 40, 'm');
+}
+function resetGenerator() {
+  $('#gform').reset(); $('#fromErr').textContent = ''; $('#fromName').removeAttribute('aria-invalid');
+  $('#gout').hidden = true; lastGreeting = null;
+}
+async function downloadCard() {
+  if (!lastGreeting) return;
+  try {
+    if (document.fonts && document.fonts.load) {
+      await Promise.race([Promise.all([document.fonts.load('700 56px "Cinzel Decorative"'), document.fonts.load('600 44px "Noto Sans Devanagari"', lastGreeting.text)]), new Promise(r => setTimeout(r, 1500))]);
+    }
+    const W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+    const x = c.getContext('2d');
+    let g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#5b1a82'); g.addColorStop(.6, '#3a0816'); g.addColorStop(1, '#2a0845');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    g = x.createRadialGradient(W / 2, 200, 20, W / 2, 200, 700); g.addColorStop(0, 'rgba(255,150,40,.45)'); g.addColorStop(1, 'rgba(255,150,40,0)');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    x.strokeStyle = '#f6c453'; x.lineWidth = 6; x.strokeRect(40, 40, W - 80, H - 80);
+    x.lineWidth = 2; x.setLineDash([12, 10]); x.strokeRect(64, 64, W - 128, H - 128); x.setLineDash([]);
+    x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.font = '120px serif'; x.fillText('🪔', W / 2, 190);
+    const tg = x.createLinearGradient(0, 260, 0, 340); tg.addColorStop(0, '#fff1b8'); tg.addColorStop(1, '#d99a1e');
+    x.fillStyle = tg; x.font = '700 64px "Cinzel Decorative", Georgia, serif';
+    x.fillText(lastGreeting.lang === 'hi' ? 'नवरात्रि की शुभकामनाएँ' : 'HAPPY NAVRATRI', W / 2, 320);
+    x.fillStyle = '#fff3d6';
+    x.font = '600 46px "Noto Sans Devanagari", "Cormorant Garamond", Georgia, sans-serif';
+    const maxW = W - 220, words = lastGreeting.body.split(' '), lines = []; let line = '';
+    words.forEach(w => { const t = line ? line + ' ' + w : w; if (x.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; });
+    if (line) lines.push(line);
+    const lh = 76, startY = 640 - (lines.length * lh) / 2;
+    lines.forEach((l, i) => x.fillText(l, W / 2, startY + i * lh));
+    if (lastGreeting.sign) { x.fillStyle = '#f6c453'; x.font = 'italic 600 44px "Noto Sans Devanagari", Georgia, sans-serif'; x.fillText(lastGreeting.sign, W / 2, startY + lines.length * lh + 60); }
+    x.fillStyle = '#f6c453'; x.font = '600 30px "Cinzel", Georgia, serif'; x.fillText('Made With ♥ For The Spirit Of Navratri', W / 2, H - 110);
+    c.toBlob(b => {
+      if (!b) { toast('Could not create the image on this device.', 'err'); return; }
+      const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'navratri-greeting.png';
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      toast('Greeting card downloaded 🎴');
+    }, 'image/png');
+  } catch (e) { toast('Could not create the image on this device.', 'err'); }
+}
+
+/* ================= SCREEN 8: DIYA ================= */
+let lit = false;
+function lightDiya() {
+  if (lit) return; lit = true;
+  $('#altar').classList.add('lit');
+  $('#altar .diya').classList.remove('off');
+  $$('#sideDiyas .diya').forEach((d, i) => setTimeout(() => d.classList.remove('off'), 500 + i * 350));
+  $('#bless').classList.add('show');
+  const b = $('#lightBtn'); b.disabled = true; b.textContent = 'DIYA LIT 🪔';
+  $('#diyaReset').hidden = false;
+  const [x, y] = centerOf($('#altar')); burst(x, y - 40, 36, 'p'); rain(24, 'p');
+  chime(); toast('Jai Mata Di 🙏');
+}
+function resetDiya() {
+  lit = false;
+  $('#altar').classList.remove('lit');
+  $$('#altar .diya, #sideDiyas .diya').forEach(d => d.classList.add('off'));
+  $('#bless').classList.remove('show');
+  const b = $('#lightBtn'); b.disabled = false; b.textContent = 'LIGHT A DIYA 🪔';
+  $('#diyaReset').hidden = true;
+}
+
+/* ================= RESTART ================= */
+function restartExperience() {
+  closeModal(); resetDiya(); resetGenerator(); generateRandomWish(true);
+  selectDay(0, false); fx.bits.length = 0; $('#cmsg').textContent = ''; cIdx = 0;
+  screens.forEach(s => { s.scrollTop = 0; });
+  showScreen(0, true);
+  toast('Experience restarted ✨');
+}
+
+/* ================= COUNTDOWN ================= */
+function initCountdown() {
+  const el = $('#countdown');
+  if (!CONFIG.countdownDate) return;
+  const target = new Date(CONFIG.countdownDate).getTime();
+  if (isNaN(target)) return;
+  const tick = () => {
+    const d = target - Date.now();
+    if (d <= 0) { el.hidden = true; return false; }
+    const v = [Math.floor(d / 864e5), Math.floor(d / 36e5) % 24, Math.floor(d / 6e4) % 60, Math.floor(d / 1e3) % 60];
+    el.innerHTML = ['Days', 'Hrs', 'Min', 'Sec'].map((l, i) => `<div><b>${String(v[i]).padStart(2, '0')}</b><small>${l.toUpperCase()}</small></div>`).join('');
+    el.hidden = false; return true;
+  };
+  if (tick()) setInterval(() => { if (!document.hidden && cur === 0) tick(); }, 1000);
+}
+
+/* ================= EVENTS ================= */
+function bindEvents() {
+  $('#enterBtn').addEventListener('click', e => { const [x, y] = centerOf(e.currentTarget); burst(x, y, 60, 'm'); nextScreen(); });
+  $('#prevBtn').addEventListener('click', previousScreen);
+  $('#nextBtn').addEventListener('click', () => { cur === TOTAL - 1 ? restartExperience() : nextScreen(); });
+
+  $('#ambBtn').addEventListener('click', e => {
+    const on = document.body.classList.toggle('bright');
+    e.currentTarget.setAttribute('aria-pressed', String(on));
+    e.currentTarget.firstElementChild.textContent = on ? '☀️' : '🌙';
+    toast(on ? 'Bright festive ambience' : 'Midnight ambience');
+  });
+  $('#musicBtn').addEventListener('click', toggleMusic);
+
+  $('#ggrid').addEventListener('click', e => { const b = e.target.closest('.gc'); if (b) openModal(+b.dataset.i, b); });
+  $('#mClose').addEventListener('click', closeModal);
+  $('#mPrev').addEventListener('click', () => stepModal(-1));
+  $('#mNext').addEventListener('click', () => stepModal(1));
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('.tab'); if (b) selectDay(+b.dataset.i); });
+  $('#tabs').addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault(); e.stopPropagation();
+    const n = (dayIdx + (e.key === 'ArrowRight' ? 1 : -1) + 9) % 9; selectDay(n); $$('#tabs .tab')[n].focus();
+  });
+  $('#dgrid').addEventListener('click', e => { const b = e.target.closest('.dc'); if (b) selectDay(+b.dataset.i); });
+
+  $('#celebrateBtn').addEventListener('click', celebrate);
+
+  $('#rndBtn').addEventListener('click', () => generateRandomWish(false));
+  $('#rCopy').addEventListener('click', () => copyText(wishText(WISHES[rIdx]), 'Wish copied! 📋'));
+  $('#rWa').addEventListener('click', () => shareWhatsApp(wishText(WISHES[rIdx])));
+  $('#wgrid').addEventListener('click', e => {
+    const c = e.target.closest('[data-copy]'), w = e.target.closest('[data-wa]');
+    if (c) copyText(wishText(WISHES[+c.dataset.copy]), 'Wish copied! 📋');
+    if (w) shareWhatsApp(wishText(WISHES[+w.dataset.wa]));
+  });
+
+  $('#gform').addEventListener('submit', generateGreeting);
+  $('#fromName').addEventListener('input', () => { $('#fromErr').textContent = ''; $('#fromName').removeAttribute('aria-invalid'); });
+  $('#resetForm').addEventListener('click', () => { resetGenerator(); $('#fromName').focus(); });
+  $('#gCopy').addEventListener('click', () => lastGreeting && copyText(lastGreeting.text, 'Greeting copied! 📋'));
+  $('#gShare').addEventListener('click', () => lastGreeting && shareText(lastGreeting.text));
+  $('#gWa').addEventListener('click', () => lastGreeting && shareWhatsApp(lastGreeting.text));
+  $('#gDl').addEventListener('click', downloadCard);
+
+  $('#lightBtn').addEventListener('click', lightDiya);
+  $('#diyaReset').addEventListener('click', () => { resetDiya(); $('#lightBtn').focus(); });
+
+  $('#restartBtn').addEventListener('click', restartExperience);
+  $('#shareSite').addEventListener('click', () => shareText('🌺 Happy Navratri! May Maa Durga bless you with happiness, strength, prosperity & peace. जय माता दी! 🙏'));
+  $('#anotherBtn').addEventListener('click', () => { showScreen(6); setTimeout(() => $('#fromName').focus({ preventScroll: true }), 700); });
+
+  document.addEventListener('keydown', e => {
+    if (!modal.hidden) {
+      if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+      if (e.key === 'ArrowRight') { stepModal(1); return; }
+      if (e.key === 'ArrowLeft') { stepModal(-1); return; }
+      if (e.key === 'Tab') {
+        const f = $$('button', $('#mbox')).filter(b => !b.disabled && b.offsetParent !== null);
+        if (!f.length) return;
+        const a = f[0], z = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+        else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+      }
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { nextScreen(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { previousScreen(); }
+  });
+
+  let sx = 0, sy = 0, st = 0, sTarget = null;
+  document.addEventListener('touchstart', e => { const t = e.touches[0]; sx = t.clientX; sy = t.clientY; st = Date.now(); sTarget = e.target; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (!modal.hidden || !sTarget || sTarget.closest('input,select,textarea,.tabs,.mbox')) return;
+    const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+    if (Math.abs(dx) > 90 && Math.abs(dx) > Math.abs(dy) * 2 && Date.now() - st < 700) { dx < 0 ? nextScreen() : previousScreen(); }
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { fxStop(); if (music.on && music.ctx) music.ctx.suspend(); }
+    else { fxStart(); if (music.on && music.ctx) music.ctx.resume(); }
+  });
+  addEventListener('resize', fxResize);
+  reduce.addEventListener && reduce.addEventListener('change', () => { fxSeed(); fx.petals.length = 0; fx.bits.length = 0; if (reduce.matches) { fxStop(); fxFrame(performance.now()); } else fxStart(); onEnter(cur); });
+}
+
+/* ================= INIT ================= */
+function init() {
+  buildMandala(); buildStars(); buildBulbs(); buildGarba(); fillDiyas(); buildContent(); buildDots();
+  fx.ctx = fx.cv.getContext('2d'); fxResize(); fxStart();
+  generateRandomWish(true); initCountdown(); bindEvents();
+  updateNavUI(); onEnter(0);
+}
+init();
+
+/* Expose the main functions for clarity / debugging */
+window.Navratri = { showScreen, nextScreen, previousScreen, generateGreeting, generateRandomWish, copyText, shareText, lightDiya, restartExperience };
+})();
+</script>
+</body>
+</html>
